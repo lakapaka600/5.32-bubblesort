@@ -11,8 +11,10 @@ int main(void) {
     } while (nvoti < 0 || nvoti > 20);
     int vet[nvoti];
     for (int i = 0; i < nvoti; i++) {
-        printf("inserire");
-        scanf("%d", &vet[i]);
+        do {
+            printf("inserire");
+            scanf("%d", &vet[i]);
+        } while (vet[i] < 2 || vet[i] > 10);
     }
     int magg = vet[0];
     for (int i = 0; i < nvoti; i++) {
@@ -28,7 +30,7 @@ int main(void) {
     for (int i = 0; i < nvoti; i++) {
         somma = somma + vet[i];
     }
-    float m = (float) somma / (float) conta;
+    float m = (float) somma / (float) nvoti;
     printf("media = %.2f", m);
     if (m == 6) {
         printf("il credito è:7-8");
@@ -41,23 +43,26 @@ int main(void) {
     } else if (m > 9 && m <= 10) {
         printf("il credito è:11-12");
     }
+    printf("\n");
     int t;
     for (int i = 0; i < nvoti - 1; i++) {
         hofattoscambi = 0;
         for (int j = 0; j < nvoti - 1; j++) {
-            if (vet[j] < vet[j + 1]) {
-                t=vet[j];
-                vet[j]=vet[j+1];
-                vet[j+1]=t;
+            if (vet[j] > vet[j + 1]) {
+                t = vet[j];
+                vet[j] = vet[j + 1];
+                vet[j + 1] = t;
                 hofattoscambi++;
             }
         }
-        printf("%d", vet[i]);
-        if (hofattoscambi == 0 ) {
+
+        if (hofattoscambi == 0) {
             break;
         }
     }
-
+    for (int i = 0; i < nvoti; i++) {
+        printf("%d", vet[i]);
+    }
 
     return 0;
 }
